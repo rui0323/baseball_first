@@ -1,5 +1,4 @@
-<h1>管理者用会員詳細</h1>
- <%#= link_to "編集", edit_admin_customer_path(customer.id) %>
+マイページ
  <p>会員ID</p>
  <p> <%= @customer.id %></p>
  <p>名前</p>
@@ -13,4 +12,4 @@
  <p><%= @customer.address %></p>
  <p>電話番号</p>
  <p><%= @customer.phone_number %></p>
- <%= link_to "編集する", edit_admin_customer_path(@customer)%>
+<%= link_to "編集", edit_customer_path(current_customer) %>

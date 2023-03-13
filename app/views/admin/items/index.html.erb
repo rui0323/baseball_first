@@ -2,10 +2,11 @@
 
 <% @items.each do |item| %>
 
-  <p>タイトル</p>
+   <%= image_tag item.image ,size: "200x200" %>
   <span><%= link_to item.name, admin_item_path(item.id) %></span>
   <span><%= item.description %></span>
   <span><%= item.price %></span>
+  <%#= item.genre.name %>
   <span><% if item.is_active %>
  <p>販売中</p>
  <% else %>

@@ -1,8 +1,9 @@
 <div>
-  <%= image_tag @item.image %>
-  <p>ショップ名：<%= @item.name %></p>
+  <%= image_tag @item.image ,size: "200x200" %>
+  <p>商品名：<%= @item.name %></p>
   <p>説明：<%= @item.description %></p>
-  <p>投稿ユーザー画像：<%#= image_tag 'sample-author1.jpg' %></p>
+  <p>ジャンル：<%= @item.genre.name %></p>
+  <p>提供メーカー：<%#= image_tag 'sample-author1.jpg' %></p>
   <p>税込価格（税抜価格）:<%= @item.price %>円</p>
    <span><% if @item.is_active %>
  <p>販売中</p>
@@ -10,7 +11,7 @@
  <p>販売停止中</p>
  <% end %>
  </span>
-  <p>投稿日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
+  <p>発売日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
   <%= link_to "編集", edit_admin_item_path(@item.id) %>
   <%= link_to "削除", admin_item_path(@item.id), method: :delete %>
 </div>
