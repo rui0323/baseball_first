@@ -6,7 +6,7 @@
   <span><%= link_to item.name, admin_item_path(item.id) %></span>
   <span><%= item.description %></span>
   <span><%= item.price %></span>
-  <%#= item.genre.name %>
+  <span><%= item.genre.name %></span>
   <span><% if item.is_active %>
  <p>販売中</p>
  <% else %>
