@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    end
 
   scope module: :public do
+  resources :shopping_addresses, only: [:index, :create, :destroy, :edit, :update]
   resources :customers, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]
    delete "/cart_items/destroy_all" => "cart_items#destroy_all"

@@ -28,7 +28,9 @@
   <li>
   <%= link_to "マイページ", customer_path(current_customer) %>
  </li>
-
+　<li>
+  <%= link_to "配送先一覧", shopping_addresses_path %>
+ </li>
 <% elsif admin_signed_in? %>
  <li>
   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -45,6 +47,7 @@
   <li>
   <%= link_to "会員一覧", admin_customers_path %>
  </li>
+
 <% else %>
  <li>
   <%= link_to "新規登録", new_customer_registration_path %>

@@ -3,11 +3,21 @@ class Public::ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    @genres = Genre.all
+    #@genre = Genre.find(params[:id])
+    if params[:genre_id]
+    @items = @items.where(genre_id: params[:genre_id])
+    @title = Genre.find(params[:genre_id]).name
+    else
+    @items = @items.all
+    @title = "商品"
+    end
   end
 
   def show
     @item =  Item.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
   end
   
   private

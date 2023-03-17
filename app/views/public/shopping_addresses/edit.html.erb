@@ -1,0 +1,12 @@
+<%= form_with model: @shopping_address,url: shopping_address_path(@shopping_address.id),local:true  do |f| %>
+
+<%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+<%= f.text_field :postcode, placeholder: "0000000" %>
+
+<%= f.label :address, "住所" %>
+<%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0"%>
+
+<%= f.label :name, "宛名" %>
+<%= f.text_field :name, placeholder: "令和道子" %>
+<%= f.submit "変更内容を保存", class:"btn btn-sm btn-success" %>
+ <% end %>

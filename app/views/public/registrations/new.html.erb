@@ -4,12 +4,33 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label "お名前"%>
+    <%= f.label "(姓)" %>
+    <%= f.text_field :last_name, placeholder: "平成" %>
+    <%= f.label "(名)" %>
+    <%= f.text_field :first_name, placeholder: "平成" %>
+  </div>
+  <div class="field">
+  <%= f.label "郵便番号(ハイフンなし)" %>
+  <%= f.text_field :postcode, placeholder: "1001000" %>
+  </div>
+  <div class="field">
+    <%= f.label "住所" %>
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+  </div>
+  <div class="field">
+    <%= f.label "メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "sample@example.com"%>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "電話番号(ハイフンなし)" %>
+    <%= f.text_field :phone_number, placeholder: "08012345678" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label "パスワード"%>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,7 +38,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "パスワード確認" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -25,5 +46,5 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "public/shared/links" %>
+<h4>すでに登録の方</h4>
+<%= render "public/shared/links" %>はこちらから

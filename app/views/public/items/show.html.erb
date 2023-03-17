@@ -1,3 +1,9 @@
+<h4>ジャンル検索</h4>
+<% @genres.each do |genre| %>
+<%= link_to genre.name,items_path(genre_id: genre.id)%>
+<% end %>
+
+
 <h1>商品詳細</h1>
  <%= image_tag @item.image ,size: "200x200" %>
 <%= @item.name %>
