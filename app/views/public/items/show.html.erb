@@ -1,27 +1,40 @@
-<h4>ジャンル検索</h4>
-<% @genres.each do |genre| %>
-<%= link_to genre.name,items_path(genre_id: genre.id)%>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2 md-4">
+      <div style="border: double;">
+        <div style="text-align: center">
+          <h4>ジャンル検索</h4>
+        </div>
 
+          <% @genres.each do |genre| %>
+            <div style="text-align: center">
+              <%= link_to genre.name,items_path(genre_id: genre.id)%>
+             </div>
+          <% end %>
+      </div>
+    </div>
 
-<h1>商品詳細</h1>
- <%= image_tag @item.image ,size: "200x200" %>
-<%= @item.name %>
-<%= @item.description %>
-￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)
- <span><% if @item.is_active %>
- <p>販売中</p>
- <% else %>
- <p>販売停止中</p>
- <% end %>
- </span>
-  <p>発売日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
+    <div class="col-8 md-8  offset-md-1">
+        <%= image_tag @item.image ,size: "200x200" %>
+        <p><%= @item.name %></p>
+        <p><%= @item.description %></p>
+        <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>
+        <span><% if @item.is_active %>
+        <p>販売中</p>
+        <% else %>
+        <p>販売停止中</p>
+        <% end %>
+        </span>
+        <p>発売日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
 
-   <% if customer_signed_in? %>
-   <%= form_with model: @cart_item,url: cart_items_path do |f| %>
+        <% if customer_signed_in? %>
+        <%= form_with model: @cart_item,url: cart_items_path do |f| %>
 
-    <%= f.hidden_field :item_id, value: @item.id%>
-    <%= f.select :amount, *[1..9] %>
-    <%= f.submit "カートに入れる" %>
-    <% end %>
-    <% end %>
+        <%= f.hidden_field :item_id, value: @item.id%>
+        <%= f.select :amount, *[1..9] %>
+        <%= f.submit "カートに入れる" %>
+        <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

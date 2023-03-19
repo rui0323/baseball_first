@@ -1,19 +1,33 @@
- <h4>ジャンル検索</h4>
-<% @genres.each do |genre| %>
-<%= link_to genre.name,items_path(genre_id: genre.id)%>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2 md-4">
+      <div style="border: double;">
+        <div style="text-align: center">
+          <h4>ジャンル検索</h4>
+        </div>
+          <% @genres.each do |genre| %>
+            <div style="text-align: center">
+              <%= link_to genre.name,items_path(genre_id: genre.id)%>
+            </div>
+          <% end %>
+        </div>
+    </div>
 
-<h1><%= @title %>一覧</h1>
-
- <% @items.each do |item| %>
-   <%= image_tag item.image ,size: "200x200" %>
-  <%= link_to item.name, item_path(item.id)  %>
-  <span><%= item.description %></span>
-   ￥<%= item.price %>
-    <span><% if item.is_active %>
- <p>販売中</p>
- <% else %>
- <p>販売停止中</p>
- <% end %>
- </span>
-  <% end %>
+    <div class="col-8 md-8  offset-md-1">
+      <h3><%= @title %>一覧</h3>
+        <div style="border: double;">
+          <% @items.each do |item| %>
+            <p><%= image_tag item.image ,size: "200x200" %></p>
+            <p><%= link_to item.name, item_path(item.id)  %></p>
+               <%#= item.description %>
+            <p>￥<%= item.price %></p>
+              <% if item.is_active %>
+            <p>販売中</p>
+              <% else %>
+            <p>販売停止中</p>
+              <% end %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
