@@ -6,17 +6,22 @@
    <%= cart_item.item.with_tax_price %>
    <%= cart_item.amount %>
    <%= cart_item.subtotal %></br>
-  
+  <% @cart_item_total_price += cart_item.subtotal %>
   <% end %>
    <h4>支払方法</h4>
   <%= @order.payment_method %>
    <h4>お届け先</h4>
    〒<%= @order.postcode %><%= @order.address %>
    <%= @order.name %>
-   
+
    <h4>送料</h4>
    <%= @order.shipping_fee %>
    <h4>商品合計</h4>
    <%= @cart_item_total_price %>
     <h4>請求金額</h4>
     <%= @cart_item_total_price + @order.shipping_fee %>
+     <%= form_with model: @order, url: orders_path, local: true do |f| %>
+     
+      <%= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
+      
+      <% end %>
