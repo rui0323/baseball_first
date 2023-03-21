@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @item.save
+     flash[:notice] = "商品登録が成功しました"
     redirect_to admin_items_path(@item.id)
     else
     render :new
@@ -30,6 +31,7 @@ class Admin::ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     item.update(item_params)
+    flash[:notice] = "変更が成功しました"
     redirect_to admin_item_path(item.id)
   end
 

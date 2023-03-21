@@ -7,7 +7,7 @@ class Item < ApplicationRecord
    validates :description, presence: true
    validates :genre_id, presence: true
    validates :price, presence: true
-   
+   validates :image, presence: true
    def add_tax_price
         (self.price * 1.10).round
    end

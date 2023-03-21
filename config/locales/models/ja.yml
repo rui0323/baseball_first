@@ -3,10 +3,21 @@ ja:
     models:
       item: 商品
       genre: ジャンル
+      customer: お客様情報
     attributes:
       item:
+        image: 画像
         name: 商品名
         description: 商品の説明
         price: 価格
       genre:
         name: ジャンル名
+      customer:
+        first_name: （名）
+        last_name: （性）
+        postcode: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        email: メールアドレス  

@@ -1,4 +1,9 @@
 <div>
+  <%= flash[:notice] %>
+</div>
+
+
+<div>
   <%= image_tag @item.image ,size: "200x200" %>
   <p>商品名：<%= @item.name %></p>
   <p>説明：<%= @item.description %></p>

@@ -7,4 +7,9 @@ class Customer < ApplicationRecord
    has_many :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :last_name,  presence: true
+  validates :first_name, presence: true
+  validates :phone_number, presence: true
+  validates :address, presence: true
 end

@@ -60,3 +60,4 @@ gem 'devise'
 gem "enum_help"
 
 gem 'rails-i18n'
+gem 'pry-rails'

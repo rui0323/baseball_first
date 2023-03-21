@@ -15,6 +15,7 @@ class Public::CustomersController < ApplicationController
   def update
     customer = Customer.find(params[:id])
     customer.update(customer_params)
+     flash[:notice] = "変更が成功しました"
     redirect_to admin_customer_path(customer.id)
   end
       #flash[:customer_updated_error] = "会員情報が正常に保存されませんでした。"
