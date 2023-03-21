@@ -2,7 +2,7 @@
 
 <% @items.each do |item| %>
 
-   <%= image_tag item.image ,size: "200x200" %>
+   <%#= image_tag item.image ,size: "200x200" %>
   <span><%= link_to item.name, admin_item_path(item.id) %></span>
   <span><%= item.description %></span>
   <span><%= item.price %></span>

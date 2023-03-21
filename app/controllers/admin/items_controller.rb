@@ -7,14 +7,16 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    @item.save
-
+    if @item.save
     redirect_to admin_items_path(@item.id)
+    else
+    render :new
+    end
   end
 
   def index
      @items = Item.all
-
+     #@items = Item.find(params[:id])
   end
 
   def show

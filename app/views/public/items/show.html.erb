@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container  px-8 px-sm-8">
   <div class="row">
-    <div class="col-2 md-4">
+    <div class="col-2  mt-5 pt-5">
       <div style="border: double;">
         <div style="text-align: center">
           <h4>ジャンル検索</h4>
@@ -14,8 +14,8 @@
       </div>
     </div>
 
-    <div class="col-8 md-8  offset-md-1">
-        <%= image_tag @item.image ,size: "200x200" %>
+    <div class="col-4 mt-5 pt-5 offset-md-2">
+        <%= image_tag @item.image ,size: "300x300" %>
         <p><%= @item.name %></p>
         <p><%= @item.description %></p>
         <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>
@@ -32,7 +32,7 @@
 
         <%= f.hidden_field :item_id, value: @item.id%>
         <%= f.select :amount, *[1..9] %>
-        <%= f.submit "カートに入れる" %>
+        <%= f.submit "カートに入れる",class:"btn btn-outline-danger"  %>
         <% end %>
         <% end %>
     </div>
