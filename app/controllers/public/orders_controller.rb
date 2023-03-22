@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     cart_items = current_customer.cart_items.all
-  　@order = current_customer.orders.new(order_params)
+    @order = current_customer.orders.new(order_params)
     if @order.save
        cart_items.each do |cart|
         order_detail = OrderDetail.new
@@ -24,11 +24,14 @@ class Public::OrdersController < ApplicationController
   end
 
 
+
   def confirm
     @order = Order.new(order_params)
-     @sub_total = 0
-     @cart_item_total_price = 0
+    @sub_total = 0
+    @cart_item_total_price = 0
     @order.shipping_fee = 800
+    @order.payment_method = params[:order][:payment_method]
+    @order.status = params[:status]
 
     if params[:order][:address_number] == "1"
       @order.postcode = current_customer.postcode
@@ -40,12 +43,48 @@ class Public::OrdersController < ApplicationController
        @order.postcode = @shopping_address.postcode
        @order.address = @shopping_address.address
        @order.name = @shopping_address.name
+
+
+    elsif params[:order][:address_number] == "3"
+       if params[:order][:postcode].empty?
+         render :new
+
+
+       elsif params[:order][:address].empty?
+         render :new
+
+
+       elsif params[:order][:name].empty?
+         render :new
+       end
     end
+    @cart_items_total_price = 0
+  end
+
+
+  def index
+    @orders = current_customer.orders
+  end
+
+
+  def show
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details
+    @sub_total = 0
+    @total_price = 0
+    @total = 0
+    @order.shipping_fee = 800
+     @order_details.each do |order_detail|
+       @total = @total += order_detail.subtotal
+       @total_price += order_detail.subtotal
+     end
+
+
   end
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :total_price, :postcode, :address, :name)
+    params.require(:order).permit(:payment_method, :total_price, :postcode, :address, :name, :status)
   end
 
   def address_params

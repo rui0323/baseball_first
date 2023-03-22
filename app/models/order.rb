@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
      belongs_to :customer
       has_many :order_details
+     has_one_attached :image
 
     validates :postcode, presence: true
     validates :address, presence: true

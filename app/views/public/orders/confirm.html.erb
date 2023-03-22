@@ -1,7 +1,7 @@
  <h2>注文情報確認</h2>
 
   <% current_customer.cart_items.each do |cart_item| %>
-
+     <%= image_tag cart_item.item.image, size: "100x100" %>
    <%= cart_item.item.name %>
    <%= cart_item.item.with_tax_price %>
    <%= cart_item.amount %>
@@ -21,7 +21,11 @@
     <h4>請求金額</h4>
     <%= @cart_item_total_price + @order.shipping_fee %>
      <%= form_with model: @order, url: orders_path, local: true do |f| %>
-     
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%= f.hidden_field :postcode, :value => @order.postcode %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :total_price, :value => @sub_total %>
       <%= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
-      
+
       <% end %>
