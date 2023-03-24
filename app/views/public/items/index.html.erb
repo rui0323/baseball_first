@@ -15,17 +15,19 @@
 
     <div class="col-8 md-8  offset-md-1">
       <h3><%= @title %>一覧</h3>
-        <div style="border: double;">
+        <div class="d-flex flex-wrap">
           <% @items.each do |item| %>
-            <p><%= image_tag item.image ,size: "200x200" %></p>
-            <p><%= link_to item.name, item_path(item.id)  %></p>
+           <div class="p-2">
+            <%= image_tag item.image ,size: "100x100" %>
+            </div>
+             <div class="p-2">
+            <%= link_to item.name, item_path(item.id)  %>
+            </div>
                <%#= item.description %>
-            <p>￥<%= item.price %></p>
-              <% if item.is_active %>
-            <p>販売中</p>
-              <% else %>
-            <p>販売停止中</p>
-              <% end %>
+             <div class="p-2">
+             ￥<%= item.price %>
+             </div>
+
           <% end %>
         </div>
     </div>
