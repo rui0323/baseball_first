@@ -34,7 +34,7 @@
     <div class="p-2">
      <% if item.image.attached? %>
      <%= link_to item_path(item.id) do %>
-     <%= image_tag item.image, size: "200x150" %>
+     <%= image_tag item.image.last, size: "200x150" %>
      <% end %>
      <% else %>
      <%= link_to item_path(item.id) do %>

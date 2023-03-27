@@ -9,7 +9,7 @@
         <table class="table table-borderless">
           <tr>
             <th>商品画像</th>
-            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+            <td><%= f.file_field :image, multiple: true, accept: "image/*", class: "form-control-file" %></td>
           </tr>
 
           <tr>

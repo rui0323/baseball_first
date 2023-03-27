@@ -2,7 +2,11 @@
   <%= flash[:notice] %>
     <div class="row">
       <div class="col-4 mt-5 pt-5">
-        <%= image_tag @item.image ,size: "200x200" %>
+        <% if @item.image.attached? %>
+         <% @item.image.each do |image| %>
+        <%= image_tag image ,size: "200x200" %>
+         <% end %>
+         <% end %>
       </div>
 
       <div class="col-6 mt-5 pt-5">

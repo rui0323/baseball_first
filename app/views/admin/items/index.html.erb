@@ -18,15 +18,21 @@
 
     <tbody>
       <% @items.each do |item| %>
-      <tr> 
-        <th><%= image_tag item.image ,size: "200x200" %></th>
+      <tr>
+        <th>
+          <% if item.image.attached? %>
+          <%# item.image.each do |image| %>
+          <%= image_tag item.image.last ,size: "200x200" %>
+          <%# end %>
+          <% end %>
+          </th>
         <th><%= link_to item.name, admin_item_path(item.id) %></th>
         <th><%= item.price %></th>
         <th><%= item.genre.name %></th>
         <th><% if item.is_active %>
-            <p>販売中</p>
+            <p style="color: red;">販売中</p>
             <% else %>
-            <p>販売停止中</p>
+            <pstyle="color: black;">販売停止中</p>
             <% end %>
         </th>
       </tr>

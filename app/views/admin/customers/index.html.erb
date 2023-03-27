@@ -1,6 +1,24 @@
-<h1>管理者用 ユーザー一覧</h1>
- <% @customers.each do |customer| %>
-<p><%= customer.id %></p>
-<p><%= link_to customer.first_name, admin_customer_path(customer.id)  %></p>
-<p><%= customer.email %></p>
-<% end %>
+<div class="container  px-8 px-sm-8">
+  <p><span class="bg-lightsecondary">会員一覧</span>
+    <table class="table ">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <th><%= customer.id %></th>
+          <th><%= link_to customer.first_name, admin_customer_path(customer.id)  %></th>
+          <th><%= customer.email %></th>
+          <th></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
