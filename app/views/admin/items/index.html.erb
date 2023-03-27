@@ -1,21 +1,36 @@
-<div>
+<div class="container  px-8 px-sm-8">
   <%= flash[:notice] %>
+
+  <p><span style="margin-right: 73%">
+    <b>商品一覧</b>
+  </span>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+      <tr> 
+        <th><%= image_tag item.image ,size: "200x200" %></th>
+        <th><%= link_to item.name, admin_item_path(item.id) %></th>
+        <th><%= item.price %></th>
+        <th><%= item.genre.name %></th>
+        <th><% if item.is_active %>
+            <p>販売中</p>
+            <% else %>
+            <p>販売停止中</p>
+            <% end %>
+        </th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-
-<h1>商品一覧</h1>
-
-<% @items.each do |item| %>
-
-   <%= image_tag item.image ,size: "200x200" %>
-  <span><%= link_to item.name, admin_item_path(item.id) %></span>
-  <span><%= item.description %></span>
-  <span><%= item.price %></span>
-  <span><%= item.genre.name %></span>
-  <span><% if item.is_active %>
- <p>販売中</p>
- <% else %>
- <p>販売停止中</p>
- <% end %>
- </span>
-<% end %>

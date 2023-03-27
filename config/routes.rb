@@ -24,7 +24,7 @@ Rails.application.routes.draw do
    get "/orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :show, :index]
    get 'search' => "searches#search"
-   root to: "homes#top"
+   root "homes#top"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

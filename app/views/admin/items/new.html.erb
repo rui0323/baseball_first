@@ -1,31 +1,63 @@
- <% if @item.errors.any? %>
+<div class="d-flex justify-content-center">
+  <% if @item.errors.any? %>
     <%= @item.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @item.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-    <% end %>
-  </ul>
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
   <% end %>
+</div>
 
-
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @item,url: admin_items_path(@item.id) do |f| %>
-    <h4>商品画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <h4>商品名</h4>
-      <%= f.text_field :name %>
-    <h4>説明</h4>
-      <%= f.text_area :description %>
-      <h4>ジャンル</h4>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-       <h4>税抜価格</h4>
-      <%= f.text_field :price %>
-       <h4>販売ステータス</h4>
-
-            <%= f.radio_button :is_active, true %>
-            <%= f.label :is_active, "販売中" %>
-            <%= f.radio_button :is_active, false %>
-            <%= f.label :is_active, "販売停止中" %>
-
-    <%= f.submit '投稿' %>
-  <% end %>
+<div class="container ">
+  <div class="row">
+    <div class="col-sm-12">
+      <p><span class="p-3 mb-2 bg-light text-dark">
+        商品新規登録
+      </span>
+  
+      <%= form_with model: @item,url: admin_items_path(@item.id) do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+      
+        
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+    
+        
+          <tr>
+            <td>説明</td>
+            <td><%= f.text_area :description %></td>
+          </tr>
+      
+        
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+          </tr>
+       
+       
+          <tr>
+            <td>税抜価格</td>
+            <td><%= f.text_field :price %></td>
+          </tr>
+      
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+               <%= f.radio_button :is_active, true %>
+               <%= f.label :is_active, "販売中" %>
+               <%= f.radio_button :is_active, false %>
+               <%= f.label :is_active, "販売停止中" %>
+            </td>
+          </tr>
+        <%= f.submit '投稿' %>
+      <% end %>
+    </div>
+  </div>
+</div>
