@@ -1,16 +1,42 @@
-<h1>管理者用会員詳細</h1>
- <%#= link_to "編集", edit_admin_customer_path(customer.id) %>
- <p>会員ID</p>
- <p> <%= @customer.id %></p>
- <p>名前</p>
- <p> <%= @customer.first_name %>
- <%= @customer.last_name %></p>
- <p>メールアドレス</p>
- <p><%= @customer.email %></p>
- <p>郵便番号</p>
- <p><%= @customer.postcode %></p>
- <p>住所</p>
- <p><%= @customer.address %></p>
- <p>電話番号</p>
- <p><%= @customer.phone_number %></p>
- <%= link_to "編集する", edit_admin_customer_path(@customer)%>
+<div class="row">
+	  <div class="offset-sm-4 col-sm-4">
+	    <table class="table table-borderless table-hover">
+       <h1>管理者用会員詳細</h1>
+         <%#= link_to "編集", edit_admin_customer_path(customer.id) %>
+         <tr class="brown-border">
+           <td>会員ID</td>
+           <td> <%= @customer.id %></td>
+         </tr>
+
+	        <tr class="brown-border">
+           <td>名前</td>
+           <td><%= @customer.first_name %>
+               <%= @customer.last_name %></td>
+         </tr>
+
+	        <tr class="brown-border">
+           <td>メールアドレス</td>
+           <td><%= @customer.email %></td>
+         </tr>
+
+	        <tr class="brown-border">
+           <td>郵便番号</td>
+           <td><%= @customer.postcode %></td>
+         </tr>
+
+	        <tr class="brown-border">
+           <td>住所</td>
+           <td><%= @customer.address %></td>
+         </tr>
+
+	        <tr class="brown-border">
+           <td>電話番号</td>
+           <td><%= @customer.phone_number %></td>
+         </tr>
+
+         <tr class="brown-border">
+           <td><%= link_to "編集する", edit_admin_customer_path(@customer)%></td>
+         </tr>
+       </table>
+  </div>
+</div>
