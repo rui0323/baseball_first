@@ -15,7 +15,11 @@
     </div>
 
     <div class="col-4 mt-5 pt-5 offset-md-2">
-        <%= image_tag @item.image ,size: "300x300" %>
+         <% if @item.image.attached? %>
+         <% @item.image.each do |image| %>
+        <%= image_tag image ,size: "200x200" %>
+         <% end %>
+         <% end %>
         <p><%= @item.name %></p>
         <p><%= @item.description %></p>
         <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込)</p>

@@ -1,8 +1,8 @@
 class Public::ItemsController < ApplicationController
   before_action :authenticate_customer!, only: [:show]
-  
+
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
     @genres = Genre.all
     #@genre = Genre.find(params[:id])
     if params[:genre_id]
@@ -19,11 +19,11 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
-  
+
   private
  def item_params
   params.require(:items).permit(:genre_id,:name,:description,:price)
  end
-  
-  
+
+
 end
