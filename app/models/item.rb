@@ -3,6 +3,8 @@ class Item < ApplicationRecord
    has_many_attached :image
    has_many :cart_items
    has_many :order_details
+   belongs_to :customer
+   has_many :likes, dependent: :destroy
 
    validates :name, presence: true
    validates :description, presence: true
@@ -29,6 +31,10 @@ class Item < ApplicationRecord
     else
       @item = Item.all
     end
+   end
+
+   def liked_by(customer)
+    Like.find_by(customer_id: customer.id, item_id: id)
    end
 
 end

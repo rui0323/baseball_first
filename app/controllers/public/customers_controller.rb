@@ -6,6 +6,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    likes = Like.where(customer_id: current_customer.id).order(created_at: :desc).pluck(:item_id)
+    @likes = Item.find(likes)
   end
 
   def edit
@@ -20,6 +22,13 @@ class Public::CustomersController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  
+  def like
+    @customer = Customer.find(params[:id])
+    likes = Like.where(customer_id: current_customer.id).pluck(:item_id)
+    @likes = Item.find(likes)
   end
       #flash[:customer_updated_error] = "会員情報が正常に保存されませんでした。"
    private

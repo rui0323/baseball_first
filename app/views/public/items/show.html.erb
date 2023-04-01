@@ -39,6 +39,16 @@
         <%= f.submit "カートに入れる",class:"btn btn-outline-danger"  %>
         <% end %>
         <% end %>
+
+        <% if current_customer != @item.customer %>
+      <div class="recipe-like">
+      <% if @item.liked_by(current_customer).blank? %>
+        <%= link_to "お気に入りに保存", item_likes_path(@item), method: :post, class: "btn btn-success btn-sm" %>
+      <% else %>
+        <%= link_to "保存済み", item_like_path(@item,@item.liked_by(current_customer)), method: :delete, class: "btn btn-outline-success btn-sm" %>
+      <% end %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>

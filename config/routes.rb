@@ -16,15 +16,20 @@ Rails.application.routes.draw do
 
   scope module: :public do
   resources :shopping_addresses, only: [:index, :create, :destroy, :edit, :update]
-  resources :customers, only: [:show, :edit, :update]
-  resources :items, only: [:index, :show]
-   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+  resources :customers, only: [:show, :edit, :update, :like] do
+     member do
+      get :like
+     end
+  end
+  resources :items, only: [:index, :show] do
+  resources :likes, only: [:create, :destroy]
+  end
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   resources :cart_items, only: [:index, :create, :destroy, :update]
-   post "/orders/confirm" => "orders#confirm"
-   get "/orders/complete" => "orders#complete"
+  post "/orders/confirm" => "orders#confirm"
+  get "/orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :show, :index]
-  
-   root "homes#top"
+  root "homes#top"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 get 'search' => "searches#search"

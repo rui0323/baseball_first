@@ -1,0 +1,11 @@
+<% if !Like.exists?(customer_id: current_customer.id, item_id: item.id) %>
+  <%= link_to item_path(item.id), method: :item, remote: true, class:"like-btn" do %>
+    <i class="fas fa-star star-icon1"></i>
+  <% end %>
+  <span class="star-count1"><%= item.likes.count %></span>
+<% else %>
+  <%= link_to item_like_path(item_id: item.id, id: item.likes[0].id), method: :delete, remote: true, class:"like-btn" do %>
+    <i class="fas fa-star star-icon2"></i>
+  <% end %>
+  <span class="star-count2"><%= item.likes.count %></span>
+<% end %>

@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :shopping_addresses
   has_many :orders
+  has_many :items, dependent: :destroy
+  has_many :likes
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

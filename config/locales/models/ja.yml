@@ -4,6 +4,7 @@ ja:
       item: 商品
       genre: ジャンル
       customer: お客様情報
+      shopping_address: 配送先一覧
     attributes:
       item:
         image: 画像
@@ -20,4 +21,8 @@ ja:
         phone_number: 電話番号
         password: パスワード
         password_confirmation: パスワード（確認用）
-        email: メールアドレス  
+        email: メールアドレス
+      shopping_address:
+        postcode: 郵便番号
+        address: 住所
+        name: 宛名

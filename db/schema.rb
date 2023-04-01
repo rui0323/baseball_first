@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_22_015914) do
+ActiveRecord::Schema.define(version: 2023_04_01_063352) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 2023_03_22_015914) do
     t.integer "genre_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "item_id"], name: "index_likes_on_customer_id_and_item_id", unique: true
+    t.index ["customer_id"], name: "index_likes_on_customer_id"
+    t.index ["item_id"], name: "index_likes_on_item_id"
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -126,4 +136,6 @@ ActiveRecord::Schema.define(version: 2023_03_22_015914) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "customers"
+  add_foreign_key "likes", "items"
 end
