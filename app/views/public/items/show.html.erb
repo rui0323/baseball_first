@@ -14,10 +14,10 @@
       </div>
     </div>
 
-    <div class="col-4 mt-5 pt-5 offset-md-2">
+    <div class="col-8 mt-5 pt-5 offset-md-2">
          <% if @item.image.attached? %>
          <% @item.image.each do |image| %>
-        <%= image_tag image ,size: "200x200" %>
+         <%= image_tag image ,size: "300x300" %>
          <% end %>
          <% end %>
         <p><%= @item.name %></p>
@@ -35,18 +35,18 @@
         <%= form_with model: @cart_item,url: cart_items_path do |f| %>
 
         <%= f.hidden_field :item_id, value: @item.id%>
-        <%= f.select :amount, *[1..9] %>
-        <%= f.submit "カートに入れる",class:"btn btn-outline-danger"  %>
+        <p><%= f.select :amount, *[1..9],  size: 70 %></p>
+        <p><%= f.submit "カートに入れる",class:"btn btn-outline-danger"  %></p>
         <% end %>
         <% end %>
 
         <% if current_customer != @item.customer %>
-      <div class="recipe-like">
-      <% if @item.liked_by(current_customer).blank? %>
+        <div class="recipe-like">
+        <% if @item.liked_by(current_customer).blank? %>
         <%= link_to "お気に入りに保存", item_likes_path(@item), method: :post, class: "btn btn-success btn-sm" %>
-      <% else %>
+        <% else %>
         <%= link_to "保存済み", item_like_path(@item,@item.liked_by(current_customer)), method: :delete, class: "btn btn-outline-success btn-sm" %>
-      <% end %>
+        <% end %>
       </div>
     <% end %>
     </div>

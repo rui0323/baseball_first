@@ -29,7 +29,7 @@
             <tr>
               <th>
                  <% if cart_item.image.attached? %>
-                <%= image_tag cart_item.image ,size: "50x50" %>
+                <%= image_tag cart_item.image.last ,size: "10x10" %>
                 <% end %>
               </th>
 
