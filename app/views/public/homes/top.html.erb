@@ -13,7 +13,7 @@
          <% end %>
       </div>
       </div>
-      
+
       <div class="main-container col-7 pt-5 offset-1">
       <p class="top-font">
        ようこそ、ながのCAKEへ！<br>
@@ -22,8 +22,8 @@
        購入には会員登録が必要になります。
       </p>
       </div>
-      
-      
+
+
       <div class="col-7 mt-3 pt-3 offset-2">
       <h4><%= @title %></h4>
 
@@ -49,6 +49,10 @@
 
     <div class="p-2">
       ￥<%= item.price %>
+    </div>
+
+    <div class="p-2">
+      発売日：<%= item.created_at.strftime('%Y/%m/%d') %>
     </div>
     </th>
     <% end %>

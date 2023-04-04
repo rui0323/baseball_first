@@ -7,7 +7,7 @@
         </div>
           <% @genres.each do |genre| %>
             <div style="text-align: center">
-              <%= link_to genre.name,items_path(genre_id: genre.id)%>
+              <p><%= link_to genre.name,items_path(genre_id: genre.id)%></p>
             </div>
           <% end %>
         </div>
@@ -16,27 +16,31 @@
     <div class="col-8 md-6  offset-md-1">
       <h3><%= @title %>一覧</h3>
         <div class="d-flex flex-wrap">
+         <table class="table table-bordered">
           <% @items.each do |item| %>
-           <div class="p-2">
-               <% if item.image.attached? %>
+           <tr>
+
+             <td><% if item.image.attached? %>
              <%= link_to item_path(item.id) do %>
-            <%= image_tag item.image.last ,size: "100x100" %>
+             <%= image_tag item.image.last ,size: "100x100" %>
              <% end %>
-              <% end %>
-            </div>
-             <div class="p-2">
+             <% end %>
             <%= link_to item.name, item_path(item.id)  %>
-            </div>
+
                <%#= item.description %>
-             <div class="p-2">
              ￥<%= item.price %>
-             </div>
-
+            </td>
           <% end %>
-
+           </table>
         </div>
+        <div class="item__paginate">
+        
+         <%= paginate @items %>
+         
+        
+         </div>
     </div>
 
   </div>
-   <%= paginate @items %>
+
 </div>

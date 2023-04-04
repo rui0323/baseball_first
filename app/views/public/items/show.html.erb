@@ -1,6 +1,6 @@
 <div class="container  px-8 px-sm-8">
   <div class="row">
-    <div class="col-2  mt-5 pt-5">
+    <div class="col-2  mt-2 pt-2">
       <div style="border: double;">
         <div style="text-align: center">
           <h4>ジャンル検索</h4>
@@ -8,13 +8,13 @@
 
           <% @genres.each do |genre| %>
             <div style="text-align: center">
-              <%= link_to genre.name,items_path(genre_id: genre.id)%>
+              <p><%= link_to genre.name,items_path(genre_id: genre.id)%></p>
              </div>
           <% end %>
       </div>
     </div>
 
-    <div class="col-8 mt-5 pt-5 offset-md-2">
+    <div class="col-8 mt-2 pt-2 offset-md-2">
          <% if @item.image.attached? %>
          <% @item.image.each do |image| %>
          <%= image_tag image ,size: "300x300" %>
@@ -45,7 +45,7 @@
         <% if @item.liked_by(current_customer).blank? %>
         <%= link_to "お気に入りに保存", item_likes_path(@item), method: :post, class: "btn btn-success btn-sm" %>
         <% else %>
-        <%= link_to "保存済み", item_like_path(@item,@item.liked_by(current_customer)), method: :delete, class: "btn btn-outline-success btn-sm" %>
+        <%= link_to "お気に入り登録済み", item_like_path(@item,@item.liked_by(current_customer)), method: :delete, class: "btn btn-outline-success btn-sm" %>
         <% end %>
       </div>
     <% end %>

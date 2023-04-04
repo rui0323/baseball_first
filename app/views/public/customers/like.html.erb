@@ -1,25 +1,26 @@
-<div class="like-index text-center">
-  <div class="customer-name">
+<div class="container">
+  <div class="container">
     <%= current_customer.last_name %>さんのお気に入り
-  </div>
+ 
+   <table class="table table-bordered">
   <% if @likes.length != 0 %>
+  
     <% @likes.each do |item| %>
-      <div class="item-contents d-flex">
-
+      <tr>
+        <td>
+           <%= link_to item_path(item.id) do %>
           <%= image_tag item.image.last,size: "100x100"  %>
-
-
-        <div class="recipe">
-          <div class="recipe-title">
-            <%= link_to item.name, item_path(item) %>
+           <% end %>
+          <%= link_to item.name, item_path(item) %>
              <%= item.price %>円（税抜き）
              発売日：<%= item.created_at.strftime('%Y/%m/%d') %>
-          </div>
+          </td>
 
-        </div>
-      </div>
     <% end %>
   <% else %>
     お気に入りはまだ登録されていません
   <% end %>
+  </tr>
+  </table>
 </div>
+ </div>
