@@ -17,17 +17,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-                <% if customer_signed_in? %>
+            <ul class="navbar-nav">
 
-                <div class="pull-left">
+                <% if customer_signed_in? %>
+                <li class="nav-item offset-1">
+                  <h1><%= link_to "LOGO", root_path %></h1>
+                </li>
+
+
+                <li class="nav-item pull-left offset-1">
                   <%= form_with url: search_path, local: true, method: :get do |f| %>
                   <%= f.text_field :word, placeholder: "検索ワードを入力してください",  size: 50 %>
                   <%= f.select :range, options_for_select([['商品']]) %>
                   <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
                   <%= f.submit "🔍", class: "btn btn-primary" %>
                 <% end %>
-                </div>
+                </li>
 
 
                  <li class="nav-item">
@@ -38,10 +43,7 @@
                   <i class="fas fa-thumbs-up"></i>
                   <%= link_to "お気に入り", like_customer_path(current_customer) %>
                 </li>
-                <li class="nav-item">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-                </li>
+
                 <li class="nav-item">
                   <i class="fas fa-store-alt"></i>
                   <%= link_to "商品一覧", items_path %>
@@ -59,6 +61,11 @@
                 <i class="fas fa-truck-moving"></i>
                   <%= link_to "配送先", shopping_addresses_path %>
                  </li>
+
+                <li class="nav-item">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
 
              <% elsif admin_signed_in? %>
                <li class="nav-item">
@@ -96,11 +103,11 @@
          </nav>
       </header>
     <%= yield %>
-      <footer class="bg-dark text-white pt-5 pb-4">
+      <footer class=" navbar-dark bg-dark text-white pt-5 pb-4">
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <p>善良な市民同士で無差別に食欲を煽るSNS</p>
+            <p></p>
             <%#= image_tag('logo-white.png') %>
           </div>
           <div class="col-md-8">

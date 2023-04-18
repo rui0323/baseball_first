@@ -4,6 +4,7 @@
       <h2>注文履歴一覧</h2>
     </div>
   </div>
+  
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -15,12 +16,13 @@
         <th>注文詳細</th>
       </tr>
     </thead>
- <% @orders.each do |order| %>
- <tbody>
+    <% @orders.each do |order| %>
+    
+    <tbody>
       <tr>
-           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
         <td>〒<%= order.postcode %><%= order.address %><br>
-        <%= order.name %>
+            <%= order.name %>
         </td>
         <td><% order.order_details.each do |order_detail| %>
               <li><%= order_detail.item.name %></li>
@@ -37,5 +39,5 @@
       </tr>
     </tbody>
     <% end %>
-    </table>
+  </table>
 </div>

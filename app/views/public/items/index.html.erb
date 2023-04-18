@@ -25,19 +25,19 @@
              <%= image_tag item.image.last ,size: "100x100" %>
              <% end %>
              <% end %>
-            <%= link_to item.name, item_path(item.id)  %>
-
-               <%#= item.description %>
+            <h2><%= link_to item.name, item_path(item.id)  %></h2>
+             <%#= item.description %>
              ￥<%= item.price %>
             </td>
+            </tr>
           <% end %>
            </table>
         </div>
         <div class="item__paginate">
-        
+
          <%= paginate @items %>
-         
-        
+
+
          </div>
     </div>
 

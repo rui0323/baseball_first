@@ -1,56 +1,90 @@
 <div class="container mt-5 mb-5">
    <%= render "public/shared/error_messages", resource: resource %>
-   <div class="row my-3">
-    <div class="col-sm-8 px-sm-0 offset-sm-1">
-      <h2>新規会員登録</h2>
-  </div>
-</div>
+    <div class="row my-3">
+      <div class="col-sm-8 px-sm-0 offset-sm-3">
+        <h2>新規会員登録</h2>
+      </div>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
- 
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label "お名前"%>
-    <%= f.label "(姓)" %>
-    <%= f.text_field :last_name, placeholder: "平成" %>
-    <%= f.label "(名)" %>
-    <%= f.text_field :first_name, placeholder: "平成" %>
-  </div>
-  <div class="field">
-  <%= f.label "郵便番号(ハイフンなし)" %>
-  <%= f.text_field :postcode, placeholder: "1001000" %>
-  </div>
-  <div class="field">
-    <%= f.label "住所" %>
-    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-  </div>
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "sample@example.com"%>
-  </div>
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+        <%= f.label "お名前"%>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <%= f.text_field :last_name, placeholder: "(姓)" %>
+        <%= f.text_field :first_name, placeholder: "(名)" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label "電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number, placeholder: "08012345678" %>
-  </div>
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+        <%= f.label "郵便番号(ハイフンなし)" %>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <%= f.text_field :postcode, placeholder: "1001000" %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+        <%= f.label "住所" %>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label "パスワード"%>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+        <%= f.label "メールアドレス" %><br />
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "sample@example.com"%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label "パスワード確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+        <%= f.label "電話番号(ハイフンなし)" %>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+        <%= f.text_field :phone_number, placeholder: "08012345678" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-<h4>すでに登録の方</h4>
-<%= render "public/shared/links" %>はこちらから
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+      <%= f.label "パスワード"%>
+      </div>
+      <div class="col-sm-3 px-sm-0">
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+      <%= f.label "パスワード確認" %><br />
+       </div>
+      <div class="col-sm-3 px-sm-0">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    </div>
+
+    <div class="actions  offset-sm-3">
+      <%= f.submit "Sign up", class:"btn btn-primary px-4 mt-3 mb-5" %>
+    </div>
+  <% end %>
+  <div class="row">
+      <div class="col-sm-2 px-sm-0 offset-sm-3">
+       <h4>すでに登録の方</h4>
+        </div>
+      <div class="col-sm-3 px-sm-0">
+      <%= render "public/shared/links" %>はこちらから
+   </div>
+   </div>
+   </div>
