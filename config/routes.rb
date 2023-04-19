@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get "/orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :show, :index]
   root "homes#top"
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 get 'search' => "searches#search"

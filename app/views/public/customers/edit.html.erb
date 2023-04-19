@@ -2,7 +2,7 @@
   <div class="row">
    <h2 class="red-border px-3 pb-1 offset-1 ">会員情報編集</h2>
    </div>
-   
+
    <div class="row my-3">
     <div class="offset-3 col-6">
 <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
@@ -20,7 +20,7 @@
   <h4>電話番号</h4>
    <%= f.text_field :phone_number, class: "form-control" %>
   <%= f.submit '保存', class: "btn btn-outline-danger" %>
-
+   <%= link_to "退会する" , unsubscribe_path(current_customer), class: "btn btn-outline-danger mt-auto" %>
    <% end %>
     </div>
 

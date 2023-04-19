@@ -30,6 +30,19 @@ class Public::CustomersController < ApplicationController
     likes = Like.where(customer_id: current_customer.id).pluck(:item_id)
     @likes = Item.find(likes)
   end
+  
+  def unsubscribe
+  @customer = Customer.find(params[:id])
+  end
+
+  def withdrawal
+  @customer = Customer.find(params[:id])
+  @customer.update(is_valid: false)
+  reset_session
+  flash[:notice] = "退会処理を実行いたしました"
+  redirect_to root_path
+  end
+  
       #flash[:customer_updated_error] = "会員情報が正常に保存されませんでした。"
    private
   def customer_params
