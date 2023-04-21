@@ -9,6 +9,8 @@ header {
 footer {
   margin-top: auto;
    height: 150px;
+
+   bottom:0;
 }
 
 .item__paginate{
@@ -55,4 +57,9 @@ footer {
   font-weight: bold;
   color: #84b8eb;
   padding: 10px;
+}
+
+main {
+  min-height: calc(100vh - 100px);
+  padding-bottom: 30px;
 }
