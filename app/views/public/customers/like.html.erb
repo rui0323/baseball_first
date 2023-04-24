@@ -1,26 +1,27 @@
-<div class="container">
-  <div class="container">
-    <%= current_customer.last_name %>さんのお気に入り
- 
-   <table class="table table-bordered">
-  <% if @likes.length != 0 %>
-  
-    <% @likes.each do |item| %>
-      <tr>
-        <td>
-           <%= link_to item_path(item.id) do %>
-          <%= image_tag item.image.last,size: "100x100"  %>
-           <% end %>
-          <%= link_to item.name, item_path(item) %>
-             <%= item.price %>円（税抜き）
-             発売日：<%= item.created_at.strftime('%Y/%m/%d') %>
-          </td>
 
-    <% end %>
-  <% else %>
-    お気に入りはまだ登録されていません
-  <% end %>
-  </tr>
-  </table>
+  <div class="container">
+    <div class="row">
+    <%= current_customer.last_name %>さんのお気に入り
+      <table class="table table-bordered">
+         <tbody>
+        <% if @likes.length != 0 %>
+
+        <% @likes.each do |item| %>
+        <tr>
+          <td>
+            <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image.last,size: "100x100"  %>
+            <% end %>
+            <%= link_to item.name, item_path(item) %>
+            <%= item.price %>円（税抜き）
+            発売日：<%= item.created_at.strftime('%Y/%m/%d') %>
+          </td>
+            <% end %>
+            <% else %>
+            お気に入りはまだ登録されていません
+            <% end %>
+        </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
- </div>

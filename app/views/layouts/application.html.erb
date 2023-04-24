@@ -69,20 +69,20 @@
                 </li>
 
              <% elsif admin_signed_in? %>
-               <li class="nav-item">
+               <li class="nav-item col-sm-4 offset-sm-2">
                  <i class="fas fa-running"></i>
                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                </li>
-               <li class="nav-item">
+               <li class="nav-item col-sm-4 offset-sm-2">
                  <%= link_to "商品投稿", new_admin_item_path %>
                </li>
-               <li class="nav-item">
+               <li class="nav-item col-sm-4 offset-sm-2">
                  <%= link_to "商品一覧", admin_items_path %>
                </li>
-               <li class="nav-item">
+               <li class="nav-item col-sm-4 offset-sm-2">
                  <%= link_to "ジャンル", admin_genres_path %>
                </li>
-               <li class="nav-item">
+               <li class="nav-item col-sm-4 offset-sm-2">
                  <%= link_to "会員一覧", admin_customers_path %>
                </li>
 
